@@ -1,0 +1,254 @@
+/* Reset and base styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+}
+
+/* Screen management */
+.screen {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+}
+
+.hidden {
+    display: none;
+}
+
+/* Hero Selection Screen */
+#hero-selection {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #e8e8e8;
+}
+
+#hero-selection h1 {
+    font-size: 2.5em;
+    margin-bottom: 50px;
+    color: #333;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 30px;
+}
+
+.hero-select-btn {
+    padding: 20px 40px;
+    font-size: 1.5em;
+    background-color: #4169E1;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.hero-select-btn:hover {
+    background-color: #2E4BC6;
+}
+
+/* Main Game Screen */
+#main-game {
+    width: 1200px;
+    height: 800px;
+    margin: 50px auto;
+    background-color: white;
+    border: 2px solid #333;
+    position: relative;
+}
+
+.game-container {
+    display: flex;
+    width: 100%;
+    height: 100%;
+}
+
+.column {
+    width: 400px;
+    height: 100%;
+    padding: 20px;
+    border-right: 1px solid #ccc;
+}
+
+.column:last-child {
+    border-right: none;
+}
+
+/* Left Column: Hero Stats */
+.left-column {
+    background-color: #fafafa;
+}
+
+.left-column h2 {
+    font-size: 1.8em;
+    margin-bottom: 30px;
+    text-align: center;
+    color: #333;
+}
+
+.hero-stats {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.stat-line {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    background-color: white;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+}
+
+.stat-label {
+    font-weight: bold;
+    font-size: 1.1em;
+}
+
+.stat-value {
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #333;
+}
+
+/* Branch color styling */
+.attack {
+    color: #4169E1; /* medium blue */
+}
+
+.crit {
+    color: #FF0000; /* red */
+}
+
+.dodge {
+    color: #87CEEB; /* light blue */
+}
+
+.poison {
+    color: #008000; /* green */
+}
+
+.heal {
+    color: #FFFF00; /* yellow */
+    text-shadow: 1px 1px 1px #000; /* Add shadow for yellow text visibility */
+}
+
+.ultimate {
+    color: #00FFFF; /* cyan */
+}
+
+/* Middle Column: Future Features */
+.middle-column {
+    background-color: #f8f8f8;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #666;
+    font-style: italic;
+}
+
+/* Right Column: Shop */
+.right-column {
+    background-color: #fafafa;
+}
+
+.shop-header h3 {
+    font-size: 1.5em;
+    margin-bottom: 20px;
+    text-align: center;
+    color: #333;
+}
+
+.shop-cards {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 20px;
+    max-height: 600px;
+    overflow-y: auto;
+}
+
+.shop-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px;
+    background-color: white;
+    border: 2px solid #ddd;
+    border-radius: 5px;
+    transition: border-color 0.3s;
+}
+
+.shop-card:hover {
+    border-color: #4169E1;
+}
+
+.card-text {
+    font-size: 1em;
+    flex: 1;
+}
+
+.buy-btn {
+    padding: 8px 16px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.9em;
+    transition: background-color 0.3s;
+}
+
+.buy-btn:hover {
+    background-color: #218838;
+}
+
+.buy-btn:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+.reroll-btn {
+    width: 100%;
+    padding: 15px;
+    font-size: 1.1em;
+    background-color: #ffc107;
+    color: #333;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+.reroll-btn:hover {
+    background-color: #e0a800;
+}
+
+.reroll-btn:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+/* Responsive adjustments for very small screens */
+@media (max-width: 1220px) {
+    #main-game {
+        margin: 10px auto;
+    }
+}
