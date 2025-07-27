@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Dumb Battler</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Hero Selection Screen -->
+    <div id="hero-selection" class="screen">
+        <div class="hero-selection-container">
+            <h1>Choose Your Hero</h1>
+            <div class="hero-options">
+                <div class="hero-option" data-hero="1">
+                    <h2>Hero 1</h2>
+                    <div class="hero-preview">⚔️</div>
+                    <p>Balanced warrior with moderate stats</p>
+                    <button class="select-hero-btn">Select</button>
+                </div>
+                <div class="hero-option" data-hero="2">
+                    <h2>Hero 2</h2>
+                    <div class="hero-preview">🛡️</div>
+                    <p>Defensive fighter with strong protection</p>
+                    <button class="select-hero-btn">Select</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Game Screen -->
+    <div id="game-screen" class="screen hidden">
+        <div class="game-container">
+            <!-- Hero Stats Column -->
+            <section class="hero-stats" aria-label="Hero Statistics">
+                <header class="stats-header">
+                    <h2 id="hero-name">Hero 1</h2>
+                    <div class="gold-display">
+                        <span class="gold-icon">💰</span>
+                        <span id="gold-amount">300</span> Gold
+                    </div>
+                </header>
+
+                <div class="talents-section">
+                    <h3>Talents</h3>
+                    <div class="talent-list">
+                        <div class="talent-item" data-talent="attack">
+                            <div class="talent-icon attack">⚔️</div>
+                            <div class="talent-info">
+                                <span class="talent-name">Attack</span>
+                                <span class="talent-level">Level: <span id="attack-level">0</span></span>
+                                <span class="talent-effect">Damage: +<span id="attack-value">0</span></span>
+                            </div>
+                        </div>
+                        
+                        <div class="talent-item" data-talent="crit">
+                            <div class="talent-icon crit">💥</div>
+                            <div class="talent-info">
+                                <span class="talent-name">Crit</span>
+                                <span class="talent-level">Level: <span id="crit-level">0</span></span>
+                                <span class="talent-effect">Crit Chance: +<span id="crit-value">0</span>%</span>
+                            </div>
+                        </div>
+                        
+                        <div class="talent-item" data-talent="dodge">
+                            <div class="talent-icon dodge">💨</div>
+                            <div class="talent-info">
+                                <span class="talent-name">Dodge</span>
+                                <span class="talent-level">Level: <span id="dodge-level">0</span></span>
+                                <span class="talent-effect">Dodge Chance: +<span id="dodge-value">0</span>%</span>
+                            </div>
+                        </div>
+                        
+                        <div class="talent-item" data-talent="poison">
+                            <div class="talent-icon poison">☠️</div>
+                            <div class="talent-info">
+                                <span class="talent-name">Poison</span>
+                                <span class="talent-level">Level: <span id="poison-level">0</span></span>
+                                <span class="talent-effect">Poison DMG: +<span id="poison-value">0</span></span>
+                            </div>
+                        </div>
+                        
+                        <div class="talent-item" data-talent="heal">
+                            <div class="talent-icon heal">💚</div>
+                            <div class="talent-info">
+                                <span class="talent-name">Heal</span>
+                                <span class="talent-level">Level: <span id="heal-level">0</span></span>
+                                <span class="talent-effect">Heal Power: +<span id="heal-value">0</span></span>
+                            </div>
+                        </div>
+                        
+                        <div class="talent-item" data-talent="ultimate">
+                            <div class="talent-icon ultimate">⭐</div>
+                            <div class="talent-info">
+                                <span class="talent-name">Ultimate</span>
+                                <span class="talent-level">Level: <span id="ultimate-level">0</span></span>
+                                <span class="talent-effect">Ultimate Power: +<span id="ultimate-value">0</span></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Middle Area -->
+            <section class="middle-area" aria-label="Game Actions">
+                <div class="hero-display">
+                    <div id="hero-avatar">🏃</div>
+                    <div class="hero-status">
+                        <div class="status-item">
+                            <span class="status-label">Health:</span>
+                            <div class="health-bar">
+                                <div class="health-fill" style="width: 100%"></div>
+                            </div>
+                            <span id="health-text">100/100</span>
+                        </div>
+                        <div class="status-item">
+                            <span class="status-label">Total Damage:</span>
+                            <span id="total-damage">10</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="action-buttons">
+                    <button id="battle-btn" class="action-btn">Start Battle</button>
+                    <button id="reset-btn" class="action-btn secondary">Reset Game</button>
+                </div>
+
+                <div class="battle-log">
+                    <h3>Battle Log</h3>
+                    <div id="battle-messages" class="messages"></div>
+                </div>
+            </section>
+
+            <!-- Shop Column -->
+            <section class="shop" aria-label="Talent Shop">
+                <header class="shop-header">
+                    <h2>Talent Shop</h2>
+                    <button id="reroll-btn" class="reroll-btn">
+                        🎲 Re-roll (20 Gold)
+                    </button>
+                </header>
+
+                <div class="shop-cards">
+                    <div class="talent-card" data-card="0">
+                        <div class="card-talent-icon"></div>
+                        <div class="card-content">
+                            <h4 class="card-title"></h4>
+                            <p class="card-description"></p>
+                            <div class="card-price">100 Gold</div>
+                        </div>
+                        <button class="buy-btn">Buy</button>
+                    </div>
+                    
+                    <div class="talent-card" data-card="1">
+                        <div class="card-talent-icon"></div>
+                        <div class="card-content">
+                            <h4 class="card-title"></h4>
+                            <p class="card-description"></p>
+                            <div class="card-price">100 Gold</div>
+                        </div>
+                        <button class="buy-btn">Buy</button>
+                    </div>
+                    
+                    <div class="talent-card" data-card="2">
+                        <div class="card-talent-icon"></div>
+                        <div class="card-content">
+                            <h4 class="card-title"></h4>
+                            <p class="card-description"></p>
+                            <div class="card-price">100 Gold</div>
+                        </div>
+                        <button class="buy-btn">Buy</button>
+                    </div>
+                    
+                    <div class="talent-card" data-card="3">
+                        <div class="card-talent-icon"></div>
+                        <div class="card-content">
+                            <h4 class="card-title"></h4>
+                            <p class="card-description"></p>
+                            <div class="card-price">100 Gold</div>
+                        </div>
+                        <button class="buy-btn">Buy</button>
+                    </div>
+                    
+                    <div class="talent-card" data-card="4">
+                        <div class="card-talent-icon"></div>
+                        <div class="card-content">
+                            <h4 class="card-title"></h4>
+                            <p class="card-description"></p>
+                            <div class="card-price">100 Gold</div>
+                        </div>
+                        <button class="buy-btn">Buy</button>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
